@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My First Code in Vue</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css" />
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <div>Hi</div>
+      <cart-display :cart="cartCount"></cart-display>
+      <product-display @add-to-cart="addToCart"></product-display>
+    </div>
+
+    <script src="./index.js"></script>
+    <script src="./Components/Product.js"></script>
+    <script src="./Components/Cart.js"></script>
+
+    <script>
+      app.mount(".app");
+    </script>
+  </body>
+</html>
