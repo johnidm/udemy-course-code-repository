@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Blog</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>All Blogs</h1>
+
+    {% for blog in blogs %}
+    <div>
+        <h4>{{ blog.title }}</h4>
+        <p>{{ blog.content }}</p>
+
+        <a href="/app/blog/{{blog.id}}">Read more...</a>
+    </div>
+    {%endfor%}
+
+</div>
+{% endblock %}

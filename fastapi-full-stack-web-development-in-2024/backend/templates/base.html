@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/simple.min.css') }}">
+
+    {% block title %}
+    {% endblock %}
+</head>
+<body>
+    <img src="{{ url_for('static' , path='images/banner.jpg') }}" alt="">
+    {% include "components/navbar.html" %}
+
+    {% block content %}
+    {% endblock %} 
+
+    {% block script %}
+    {% endblock %}   
+</body>
+</html>

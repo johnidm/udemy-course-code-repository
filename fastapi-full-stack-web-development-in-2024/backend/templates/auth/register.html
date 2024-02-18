@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Register</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Register</h1>
+    <form action="/app/auth/register" method="post">
+        <p>
+            <label for="fullname">Fullname:</label>
+            <input type="text" name="fullname">
+        </p>
+
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" name="username">
+        </p>
+
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" name="password">
+        </p>
+
+        <p>
+            <button type="submit">Send</button>
+            <button type="reset">Reset</button>
+        </p>
+    </form>
+</div>
+{% endblock %}
