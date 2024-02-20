@@ -9,10 +9,12 @@ class BlogResponse(BaseModel):
     slug: str
     content: str
     created_at: datetime
-    
-    
+
+
 class BlogCreate(BaseModel):
     title: str
     content: str
 
-class BlogUpdate(BlogCreate): ...
+
+class BlogUpdate(BlogCreate):
+    ...

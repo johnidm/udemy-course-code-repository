@@ -1,5 +1,3 @@
-from typing import Any
-
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.testclient import TestClient
 
@@ -22,7 +20,7 @@ def check_id_or_404(id: int):
 
 
 @app.get("/one/{id}")
-def get_user_by_id(id: int = Depends(check_id_or_404)):
+def get_user_by_id_func(id: int = Depends(check_id_or_404)):
     return f"The id func is: {id}"
 
 
@@ -34,7 +32,7 @@ class CheckId:
 
 
 @app.get("/two/{id}")
-def get_user_by_id(id: int = Depends(CheckId())):
+def get_user_by_id_class(id: int = Depends(CheckId())):
     return f"The id class is: {id}"
 
 

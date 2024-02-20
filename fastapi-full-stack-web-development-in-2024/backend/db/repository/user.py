@@ -9,14 +9,15 @@ from backend.schemas.user import UserCreate
 
 #  new_user = models.User(**payload.dict())
 
+
 def create_new_user(user: UserCreate, db: Session) -> User:
     hash_password = get_password_hash(user.password)
-    
+
     db_user = User(fullname=user.fullname, email=user.email, password=hash_password)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
-    
+
     return db_user
 
 

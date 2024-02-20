@@ -20,7 +20,7 @@ def read_item(request: Request, db: Session = Depends(get_db)):
 
 
 @router.get("/{id}", response_class=HTMLResponse)
-def read_item(request: Request, id: int, db: Session = Depends(get_db)):
+def read_item_by_id(request: Request, id: int, db: Session = Depends(get_db)):
     blog = get_blog_by_id(id=id, db=db)
     context = {"request": request, "blog": blog}
     return templates.TemplateResponse("blog/detail.html", context)

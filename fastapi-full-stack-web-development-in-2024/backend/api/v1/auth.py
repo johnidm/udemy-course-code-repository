@@ -1,25 +1,15 @@
-from datetime import datetime, timedelta
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from jose import jwt
 from sqlalchemy.orm import Session
 
 from backend.core.auth import create_access_token, get_token_payload
-from backend.core.config import settings
 from backend.core.hashing import verify_password
-from backend.db.models import User
 from backend.db.repository.user import get_user_by_email
 from backend.db.session import get_db
 from backend.schemas.auth import TokenResponse, TokenUserResponse
 
-
-# ACCESS_TOKEN_EXPIRE_MINUTES = 30  # 30 minutes
-# REFRESH_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7 # 7 days
-# ALGORITHM = "HS256"
-# JWT_SECRET_KEY = "narscbjim@$@&^@&%^&RFghgjvbdsha"   # should be kept secret
-# JWT_REFRESH_SECRET_KEY = "13ugfdfgh@#$%^@&jkl45678902"
 
 router = APIRouter()
 
@@ -43,7 +33,6 @@ def login(
             status_code=status.HTTP_400_BAD_REQUEST, detail="Incorrect password"
         )
 
-    
     access_token = create_access_token(db_user)
     refresh_token = ""
 
@@ -76,7 +65,7 @@ def get_me(payload: Annotated[Any, Depends(get_token_payload)]):
 @router.get(
     "/me-by-ck",
 )
-def get_me(access_token: Annotated[str | None, Cookie()] = None):
+def get_me_by_cookie(access_token: Annotated[str | None, Cookie()] = None):
     return access_token
 
 

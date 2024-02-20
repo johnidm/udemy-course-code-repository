@@ -4,9 +4,13 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from backend.core.auth import get_logged_user
-from backend.db.repository.blog import create_new_blog, delete_blog_by_id
-from backend.db.repository.blog import get_all_blogs, get_blog_by_id
-from backend.db.repository.blog import update_blog_by_id
+from backend.db.repository.blog import (
+    create_new_blog,
+    delete_blog_by_id,
+    get_all_blogs,
+    get_blog_by_id,
+    update_blog_by_id
+)
 from backend.db.session import get_db
 from backend.schemas.blog import BlogCreate, BlogResponse
 
@@ -15,7 +19,9 @@ router = APIRouter()
 
 
 @router.post("/", response_model=BlogResponse, status_code=status.HTTP_201_CREATED)
-def crete_blog(blog: BlogCreate, db: Session = Depends(get_db), user = Depends(get_logged_user)):
+def crete_blog(
+    blog: BlogCreate, db: Session = Depends(get_db), user=Depends(get_logged_user)
+):
     db_blog = create_new_blog(blog, db, user)
     return db_blog
 

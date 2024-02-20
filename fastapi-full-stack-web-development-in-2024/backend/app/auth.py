@@ -21,7 +21,7 @@ def read_item(request: Request):
 
 
 @router.post("/register", response_class=HTMLResponse)
-def read_item(
+def create_item(
     request: Request,
     fullname: str = Form(...),
     username: str = Form(...),

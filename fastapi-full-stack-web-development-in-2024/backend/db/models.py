@@ -1,5 +1,5 @@
 import datetime
-from typing import Any, List
+from typing import List
 
 from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base

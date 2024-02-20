@@ -3,8 +3,11 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from backend.db.repository.user import create_new_user, get_all_users
-from backend.db.repository.user import get_user_by_email
+from backend.db.repository.user import (
+    create_new_user,
+    get_all_users,
+    get_user_by_email
+)
 from backend.db.session import get_db
 from backend.schemas.user import UserCreate, UserResposne
 

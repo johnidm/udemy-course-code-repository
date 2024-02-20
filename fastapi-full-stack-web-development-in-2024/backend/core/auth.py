@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from typing import Annotated
 
-from fastapi import Cookie, Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt
 from pytest import Session
@@ -31,10 +31,13 @@ def create_access_token(db_user: User) -> str:
         algorithm=settings.JWT_ALGORITHM,
     )
 
-# 
+
+#
 def get_token_payload(access_token: Annotated[str, Depends(oauth2_scheme)]) -> dict:
     payload = jwt.decode(
-        access_token.encode(), settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM]
+        access_token.encode(),
+        settings.JWT_SECRET_KEY,
+        algorithms=[settings.JWT_ALGORITHM],
     )
     return payload
 
@@ -51,5 +54,3 @@ def get_logged_user(
         )
 
     return db_user
-
-

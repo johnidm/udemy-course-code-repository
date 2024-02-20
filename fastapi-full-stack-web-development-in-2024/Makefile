@@ -10,5 +10,11 @@ run:
 test: 
 	python -m pytest backend/tests --verbose
 
-lint:
+mypy:
 	mypy .
+
+isort:
+	isort .
+
+ruff:
+	ruff check .

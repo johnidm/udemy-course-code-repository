@@ -6,3 +6,4 @@ freezegun
 pytest-sugar
 
 isort
+ruff
