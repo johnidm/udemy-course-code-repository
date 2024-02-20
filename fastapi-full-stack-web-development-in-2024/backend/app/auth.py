@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, Form, Request, status
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
+
 from backend.core.auth import create_access_token
 from backend.db.repository.user import create_new_user
 from backend.db.session import get_db

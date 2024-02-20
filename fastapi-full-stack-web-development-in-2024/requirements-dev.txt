@@ -4,3 +4,5 @@ mypy
 pytest
 freezegun
 pytest-sugar
+
+isort

@@ -1,11 +1,13 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from .core.config import settings
 
-from backend.db.session import engine
-from backend.db.models import Base
 from backend.api.base import api_router
 from backend.app.base import app_router
+from backend.db.models import Base
+from backend.db.session import engine
+
+from .core.config import settings
+
 
 Base.metadata.create_all(engine)
 

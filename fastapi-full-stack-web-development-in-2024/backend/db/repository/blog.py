@@ -1,9 +1,11 @@
-from typing import List
-from backend.db.models import Blog, User
-from sqlalchemy.orm import Session
-from backend.schemas.blog import BlogCreate, BlogUpdate
 import secrets
+from typing import List
+
 from slugify import slugify
+from sqlalchemy.orm import Session
+
+from backend.db.models import Blog, User
+from backend.schemas.blog import BlogCreate, BlogUpdate
 
 
 def generate_slug(title: str) -> str:

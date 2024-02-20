@@ -1,8 +1,11 @@
 from typing import List
+
+from sqlalchemy.orm import Session
+
+from backend.core.hashing import get_password_hash
 from backend.db.models import User
 from backend.schemas.user import UserCreate
-from sqlalchemy.orm import Session
-from backend.core.hashing import get_password_hash
+
 
 #  new_user = models.User(**payload.dict())
 

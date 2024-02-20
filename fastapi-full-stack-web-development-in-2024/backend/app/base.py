@@ -1,5 +1,7 @@
 from fastapi import APIRouter
-from backend.app import blog, auth
+
+from backend.app import auth, blog
+
 
 app_router = APIRouter()
 

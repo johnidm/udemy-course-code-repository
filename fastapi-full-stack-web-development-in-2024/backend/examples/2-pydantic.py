@@ -1,7 +1,8 @@
-from pydantic import BaseModel, Field
-from typing import Optional, List
-from enum import Enum
 from datetime import datetime
+from enum import Enum
+from typing import List, Optional
+
+from pydantic import BaseModel, Field
 
 
 class Language(str, Enum):
@@ -28,6 +29,7 @@ print(b)
 
 
 from pydantic import BaseModel, field_validator, model_validator
+
 
 class User(BaseModel):
     email: str

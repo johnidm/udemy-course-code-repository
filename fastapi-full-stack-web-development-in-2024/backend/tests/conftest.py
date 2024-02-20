@@ -1,5 +1,4 @@
-from typing import Any
-from typing import Generator
+from typing import Any, Generator
 
 import pytest
 from fastapi import FastAPI
@@ -7,11 +6,9 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from backend.api.base import api_router
 from backend.db.models import Base
 from backend.db.session import get_db
-from backend.api.base import api_router
-
-
 from backend.main import app
 
 

@@ -1,16 +1,14 @@
 from typing import List
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
+
 from backend.core.auth import get_logged_user
-from backend.db.repository.blog import (
-    get_all_blogs,
-    get_blog_by_id,
-    delete_blog_by_id,
-    create_new_blog,
-    update_blog_by_id,
-)
+from backend.db.repository.blog import create_new_blog, delete_blog_by_id
+from backend.db.repository.blog import get_all_blogs, get_blog_by_id
+from backend.db.repository.blog import update_blog_by_id
 from backend.db.session import get_db
-from backend.schemas.blog import BlogResponse, BlogCreate
+from backend.schemas.blog import BlogCreate, BlogResponse
 
 
 router = APIRouter()

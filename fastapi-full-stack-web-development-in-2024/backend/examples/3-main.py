@@ -1,6 +1,8 @@
 from typing import Any
-from fastapi import FastAPI, HTTPException, Depends
+
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.testclient import TestClient
+
 
 app = FastAPI()
 

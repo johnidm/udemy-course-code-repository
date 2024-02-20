@@ -1,9 +1,11 @@
-from datetime import timedelta, datetime
+from datetime import datetime, timedelta
 from typing import Annotated
+
 from fastapi import Cookie, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt
 from pytest import Session
+
 from backend.core.config import settings
 from backend.db.models import User
 from backend.db.repository.user import get_user_by_email

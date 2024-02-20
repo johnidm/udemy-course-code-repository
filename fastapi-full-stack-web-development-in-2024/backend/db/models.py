@@ -1,12 +1,10 @@
-from typing import Any
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
-from sqlalchemy import String, Integer, Boolean, DateTime, Text, ForeignKey
-from sqlalchemy.sql import func
 import datetime
-from typing import List
-from sqlalchemy.orm import relationship
+from typing import Any, List
+
+from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.sql import func
 
 
 Base = declarative_base()

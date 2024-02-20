@@ -1,17 +1,18 @@
 from datetime import datetime, timedelta
 from typing import Annotated, Any
+
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
+from jose import jwt
+from sqlalchemy.orm import Session
+
 from backend.core.auth import create_access_token, get_token_payload
 from backend.core.config import settings
 from backend.core.hashing import verify_password
 from backend.db.models import User
 from backend.db.repository.user import get_user_by_email
-from jose import jwt
 from backend.db.session import get_db
 from backend.schemas.auth import TokenResponse, TokenUserResponse
-from sqlalchemy.orm import Session
-from fastapi.security import  OAuth2PasswordRequestForm
-
 
 
 # ACCESS_TOKEN_EXPIRE_MINUTES = 30  # 30 minutes
