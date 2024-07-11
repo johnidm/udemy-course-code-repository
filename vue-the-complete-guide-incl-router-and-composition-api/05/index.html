@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+
+<body>
+
+    <header>
+        <h1> Vue Behind The Scenes </h1>
+    </header>
+
+
+    <div id="app">
+
+        <section>
+            <h2>How Vue Works</h2>
+            <p>
+                <input type="text" ref="userInput">
+                <button @click="handleClick">Click Me</button>
+            </p>
+
+            <p> {{ message }} </p>
+        </section>
+
+    </div>
+
+
+    <div id="app2">
+        <section>
+            <p>
+                {{ message }}
+            </p>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

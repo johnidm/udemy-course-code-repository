@@ -1,0 +1,34 @@
+.demo {  
+    cursor: pointer;
+    border: 5px dashed black;
+    margin: 4px;
+}
+
+.actived {
+    border: 5px solid red;
+}
+
+.demoA {
+    background-color: purple;
+}
+
+.demoB {
+    background-color: blue;
+}
+
+.demoC {
+    background-color: yellow;
+}
+
+.textA {
+    color: white;
+}
+
+.textB {
+    color: white;
+}
+
+.textC {
+    color: white;
+}
+

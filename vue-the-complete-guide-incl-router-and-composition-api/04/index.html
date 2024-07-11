@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Slayer</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <section>
+            <h1>Monster Health</h1>
+            <div>
+                <div class="progress" :style="'monsterBarStyle'">{{ monsterHealth }}</div>
+            </div>
+        </section>
+
+        <section>
+            <h1>Player Health</h1>
+            <div>
+                <div class="progress" :style="'playerBarStyle'">{{ playerHealth }}</div>
+            </div>
+        </section>
+
+        <section>
+            <p>
+                <button @click="attackMonster">Attack</button>
+            </p>
+            <p>
+                <button :disabled="mayUseSpAttach" @click="specialAttack">Spacial Attack</button>
+            </p>
+            <p>
+                <button>Heal</button>
+            </p>
+            <p>
+                <button>Surrender</button>
+            </p>
+        </section>
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

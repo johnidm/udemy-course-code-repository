@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Card Register</h1>
+    </header>
+
+    <section id="app">
+
+        <h4>{{ card.name }}</h4>
+        <p><b>Number:</b> {{ card.number }}</p>
+        <p><b>Expiry:</b> {{ card.expiry }}</p>
+        <p><b>CVV:</b> {{ card.cvv }}</p>
+        <p v-once><b>Start Index:</b> {{ card.index }}</p>
+        <p><b>Current Index:</b> {{ card.index }}</p>
+
+        <div v-html="label"></div>
+
+        <figure>
+            <img v-bind:alt="image.alt" v-bind:src="image.src" />
+            <figcaption>{{ image.alt }}</figcaption>
+        </figure>
+
+        <p>
+            <input type="text" v-model="card.name">
+        </p>
+        <p>
+            <button v-on:click.middle="handleRandon">Randon Index</button>
+        </p>
+
+        <section>
+            <input type="text" v-on:input="setName($event, 'Due')">
+            <p>{{ inputName }}</p>
+        </section>
+
+        <section>
+            <form v-on:submit.prevent="handleSubmit">
+                <p>
+                    <input type="text" name="name" id="name">
+                </p>
+                <button type="submit">Sign Up</button>
+            </form>
+        </section>
+
+        <section>
+            <p>
+                <input type="text" v-model="person.name">
+            </p>
+            <p>
+                <input type="text" v-model="person.age">
+            </p>
+            
+            <p>{{ fullPerson }}</p>
+        </section>
+    
+    </section>
+    
+    <script src="app.js"></script>
+</body>
+
+</html>

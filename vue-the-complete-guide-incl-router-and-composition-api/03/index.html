@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <head>
+        <h1>Vue Dynamic Styling</h1>
+    </head>
+    <section id="app">
+        <div class="demo demoA textA" :class="boxAClass" @click="boxSelected('A')">Box A</div>
+        <div class="demo demoB textB" :class="boxBClass" @click="boxSelected('B')">Box B</div>
+        <div class="demo demoC textC" :class="boxCClass" @click="boxSelected('C')">Box C</div>
+
+    </section>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
