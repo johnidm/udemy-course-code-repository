@@ -1,0 +1,64 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+.DS_Store
+
+# Build output
+dist
+dist-ssr
+
+# Local env files
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vue-specific
+.env.local
+.env.*.local
+
+# Cache files
+.cache
+.npm
+
+# Optional: Cypress e2e testing
+/cypress/videos/
+/cypress/screenshots/
+
+# Optional: Coverage directory used by tools like istanbul
+coverage
+
+# Optional: Nuxt.js build / generate output
+.nuxt
+dist
+
+# Optional: Gatsby files
+.cache/
+public
+
+# Optional: VuePress build output
+.vuepress/dist
+
+# Optional: Serverless directories
+.serverless/
+
+# Optional: FuseBox cache
+.fusebox/
+
+# Optional: DynamoDB Local files
+.dynamodb/
