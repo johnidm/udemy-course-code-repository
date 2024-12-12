@@ -13,4 +13,15 @@ app.component("Greeting", Greeting)
 //     // el.style.color = binding.value
 // })
 
+app.provide('message', 'Morning')
+
+console.log(app.config)
+
+app.config.errorHandler = (err, instance, info) => {
+    console.log(" Error ", err, instance, info)
+  }
+
+app.config.globalProperties.prefix = 'HE'
+
+
 app.mount('#app')
