@@ -13,9 +13,6 @@ import java.util.Map;
 @RestController
 public class HomeController {
 
-    @Value("classpath:/prompts/youtube.st")
-    private Resource promptYouTube;
-
     @Value("${spring.ai.openai.chat.options.model}")
     private String openAiModel;
 
@@ -24,10 +21,7 @@ public class HomeController {
         return "API is running";
     }
 
-    @GetMapping("/template/youtube")
-    public String getTYTemplate() throws IOException {
-        return new String(promptYouTube.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-    }
+   
 
     @GetMapping("/openai")
     public Map<String, String> getOpenAI() {

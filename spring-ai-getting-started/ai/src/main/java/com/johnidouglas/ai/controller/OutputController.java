@@ -1,5 +1,7 @@
 package com.johnidouglas.ai.controller;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +10,7 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.converter.ListOutputConverter;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.support.DefaultConversionService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,5 +56,7 @@ public class OutputController {
                 .call()
                 .entity(new ListOutputConverter(new DefaultConversionService()));
     }
+
+  
 
 }

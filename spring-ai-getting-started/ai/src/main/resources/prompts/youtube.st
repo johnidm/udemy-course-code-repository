@@ -1,1 +1,1 @@
-Create a video script for this {subject}
+Create a short video script for this {subject}

@@ -52,6 +52,8 @@ curl --get http://localhost:8080/chat/prompt/math/resolve
 curl --get http://localhost:8080/chat/prompt/math/resolve/json
 
 curl --get http://localhost:8080/chat/prompt/soccer-player
+
+curl --get http://localhost:8080/chat/prompt/youtube
 ```
 
 ### Chat Manual

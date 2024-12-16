@@ -1,5 +1,7 @@
 package com.johnidouglas.ai.controller;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +15,9 @@ import org.springframework.ai.converter.MapOutputConverter;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi.ChatModel;
 import org.springframework.ai.openai.api.ResponseFormat;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.support.DefaultConversionService;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +29,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @RestController
 @RequestMapping("/chat/prompt")
 public class PromtpController {
+
+    @Value("classpath:/prompts/youtube.st")
+    private Resource promptYouTube;
 
     record MathReasoning(
             @JsonProperty(required = true, value = "steps") Steps steps,
@@ -182,6 +189,22 @@ public class PromtpController {
 
         String content = chatClient.prompt(prompt).call().content();
         return content;
+
+    }
+
+    @GetMapping("/youtube")
+    public String getTYTemplate() throws IOException {
+
+        // return new String(promptYouTube.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+
+        PromptTemplate promptTemplate = new PromptTemplate(promptYouTube);
+
+        
+        Prompt prompt = promptTemplate.create(Map.of("subject", "Python for begginer"));
+
+        ChatResponse response = this.chatClient.prompt(prompt).call().chatResponse();
+
+        return response.getResult().getOutput().getContent();
 
     }
 
