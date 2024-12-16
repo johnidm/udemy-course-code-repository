@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.converter.BeanOutputConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +37,7 @@ public class ChatClientController {
                 .system("You are a friendly chat bot that tell jokes")
                 .advisors(new SimpleLoggerAdvisor())
                 .user(input)
+
                 .call()
                 .content();
     }
@@ -56,7 +56,9 @@ public class ChatClientController {
     @GetMapping("/actor")
     public ActorFilms getActorFilms() {
         ActorFilms actorFilms = this.chatClient.prompt()
+                .system("You are a friendly chat bot that generates filmography for actors.")
                 .user("Generate the filmography for a random actor.")
+                .advisors(new SimpleLoggerAdvisor())
                 .call()
                 .entity(ActorFilms.class);
 
@@ -81,6 +83,7 @@ public class ChatClientController {
         });
 
         Flux<String> flux = this.chatClient.prompt()
+                .advisors(new SimpleLoggerAdvisor())
                 .user(u -> u.text("""
                             Generate the filmography for a random actor.
                             {format}
