@@ -9,28 +9,59 @@ public class Main {
         }
     }
     public static void main(String[] args) {
+        // Remove single item from a list containing only one element.
+        LinkedList<String> l1 = new LinkedList<>();
+        l1.remove(3);
+        l1.append("Johni");
+        l1.remove(4);
+        l1.remove(0);
+        assertEx (l1.isEmpty());
 
-        LinkedList<String> list = new LinkedList<>();
+        // Remove first item from a list of two elements.
+        LinkedList<String> l2 = new LinkedList<>();
+        l2.append("Johni");
+        l2.append("Douglas");
+        l2.remove(0);
+        assertEx( l2.size() == 1);
 
-        assertEx (list.isEmpty());
-        assertEx (list.get(1) == null);
+        // Remove middle item frmo a list of three elements.
+        LinkedList<String> l3 = new LinkedList<>();
+        l3.append("Johni");
+        l3.append("Douglas");
+        l3.append("Lara");
+        l3.remove(1);
+        assertEx( l3.size() == 2);
 
-        list.append("Johni");
-        list.append("Douglas");
-        list.append("Marti");
-        list.append("Lara");
+        LinkedList<String> l4 = new LinkedList<>();
+        l4.append("Johni");
+        l4.append("Douglas");
+        l4.append("Marti");
+        l4.append("Lara");
+        l4.insert( "Adam" );
+        l4.insert( "Yas" );
+        l4.remove(5);
+        assertEx( l4.size() == 5);
 
-        list.insert( "Adam" );
-        list.insert( "Yas" );
+        LinkedList<String> l5 = new LinkedList<>();
+        l5.append("Johni");
+        l5.append("Douglas");
+        l5.append("Marti");
 
-        assertEx( !list.isEmpty());
-        assertEx( list.size() == 6);
+        assertEx( l5.get(0).equals("Johni"));
+        assertEx( l5.get(3) == null);
 
-        list.traverse();
+        assertEx( l5.indexOf("") == -1);
+        assertEx( l5.indexOf("Douglas") == 1);
 
-        assertEx( list.get(0).equals("Yas"));
-        assertEx( list.get(3).equals("Douglas"));
-        assertEx( list.get(5).equals("Lara"));
+
+        LinkedList<String> l6 = new LinkedList<>();
+        l6.append("Johni");
+        l6.append("Douglas");
+        l6.append("Marti");
+
+        for (String i : l6) {
+            System.out.println(i);
+        }
 
     }
 }

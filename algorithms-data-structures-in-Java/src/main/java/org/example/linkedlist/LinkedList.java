@@ -1,66 +1,113 @@
 package org.example.linkedlist;
 
-public class LinkedList<T> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class LinkedList<T> implements Iterable<T> {
     private Node<T> head;
     private int length = 0;
 
-    public LinkedList() {
-        this.head = null;
-    }
-
     public void insert(T value) {
+        /*
+         * Insert a new item to the beginning
+         * The time complexity is O(1)
+         */
+
         Node<T> item = new Node<>(value);
 
-        item.setNext(this.head);
+        item.next = this.head;
         this.head = item;
         this.length += 1;
     }
 
-    public T get(int index) {
-        if (this.head == null) {
-            return null;
-        }
-
-        int count = 0;
-        Node<T> currentNode = this.head;
-
-        do {
-            if (count == index) {
-                return currentNode.getValue();
-            }
-            count += 1;
-            currentNode = currentNode.getNext();
-        } while (currentNode != null);
-
-
-        return null;
-    }
-
     public void append(T value) {
+        /*
+          Insert a new item t the ending
+          The time complexity is O(n)
+         */
+
         Node<T> item = new Node<>(value);
 
         if (this.head == null) {
             this.head = item;
-            this.length += 1;
-        } else { // Convert to a recursive function
-            Node<T> currentNode = this.head;
-            do {
-                Node<T> nextNode = currentNode.getNext();
-                if (nextNode == null) {
-                    currentNode.setNext( item );
-                    this.length += 1;
-                    break;
-                }
-                currentNode = nextNode;
-            } while (true);
+        } else {
+            Node<T> current = this.head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = item;
         }
+        this.length += 1;
     }
 
-    public T remove(T value) {
+    public T get(int index) {
+        /*
+        * Return the value corresponding to the index
+        * The time complexity is O(n)
+        */
+
+        int count = 0;
+        
+        Node<T> current = this.head;
+        while (current != null) {
+            if (count == index ) {
+                return current.value;
+            }
+            current = current.next;
+            count += 1;
+        }
+        
         return null;
     }
 
+    public void remove(int index) {
+        /*
+        * Remove the item corresponding to the index.
+        * The time complexity is O(n)
+        * */
+        if (this.head == null) {
+            return;
+        }
+
+        if (index == 0 ) {
+            this.head = this.head.next;
+            this.length -= 1;
+            return;
+        }
+
+        int count = 1;
+        Node<T> current = this.head.next;
+        Node<T> prior = this.head;
+
+        while (current != null) {
+            if (count == index) {
+                prior.next = current.next;
+                this.length -= 1;
+                return;
+            }
+
+            prior = current;
+            current = current.next;
+            count += 1;
+        }
+    }
+
     public int indexOf(T value) {
+        /*
+        * Return the index corresponding to the value
+        * The time complexity is O(n)
+        */
+
+        Node<T> current = this.head;
+        int count = 0;
+        while (current != null) {
+            if (current.value == value) {
+                return count;
+            }
+            current = current.next;
+            count += 1;
+        }
+
         return -1;
     }
 
@@ -76,9 +123,36 @@ public class LinkedList<T> {
         Node<T> currentNode = this.head;
 
         while (currentNode != null) {
-            System.out.println( currentNode.getValue() );
-            currentNode =  currentNode.getNext();
+            System.out.println( currentNode.value);
+            currentNode =  currentNode.next;
         }
 
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedListIterator();
+    }
+
+    // Inner class implementing the Iterator interface
+    private class LinkedListIterator implements Iterator<T> {
+        private Node<T> current = head;
+
+        // Check if there is a next element
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        // Return the next element
+        @Override
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            T data = current.value;
+            current = current.next;
+            return data;
+        }
     }
 }
