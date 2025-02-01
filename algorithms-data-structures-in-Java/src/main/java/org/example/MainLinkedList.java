@@ -2,7 +2,7 @@ package org.example;
 
 import org.example.linkedlist.LinkedList;
 
-public class Main {
+public class MainLinkedList {
     public static void assertEx(boolean value) {
         if (!value) {
             throw new AssertionError("Assert error!");

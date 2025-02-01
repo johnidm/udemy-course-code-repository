@@ -7,6 +7,35 @@ public class LinkedList<T> implements Iterable<T> {
     private Node<T> head;
     private int length = 0;
 
+    public void reverse() {
+
+        Node<T> current = this.head;
+        Node<T> next = null;
+        Node<T> privious = null;
+
+        while (current != null) {
+            next = current.next;
+            current.next = privious;
+            privious = current;
+            current = next;
+        }
+
+        this.head = privious;
+
+    }
+
+    public T getMiddle() {
+        Node<T> slow = this.head;
+        Node<T> fast = this.head;
+
+        while (( slow.next != null ) && (fast.next != null) && (fast.next.next != null)) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow.value;
+    }
+
     public void insert(T value) {
         /*
          * Insert a new item to the beginning
