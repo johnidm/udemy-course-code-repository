@@ -1,0 +1,41 @@
+/* Blog Index Styles */
+
+.nav-link.red {
+    color: #e74c3c !important;
+}
+
+.welcome-section {
+    padding: 2rem 0;
+}
+
+.display-4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.lead {
+    color: #34495e;
+    font-size: 1.25rem;
+}
+
+/* Add some hover effects to links */
+.nav-link:hover {
+    color: #3498db !important;
+    transition: color 0.3s ease;
+}
+
+/* Add some subtle animations */
+.display-4, .lead {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

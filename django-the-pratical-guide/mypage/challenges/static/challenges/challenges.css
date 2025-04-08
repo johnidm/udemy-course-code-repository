@@ -1,0 +1,31 @@
+ul {
+  list-style-type: none;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 20rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.26);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 20rem;
+}
+
+li {
+  margin: 1rem 0;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1rem;
+}
+
+/* li:last-of-type,
+li:nth-of-type(6) {
+  border-bottom: none;
+} */
+
+li a {
+  text-decoration: none;
+  color: rgb(12, 12, 12);
+  font-weight: bold;
+}

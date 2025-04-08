@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{month | title}}
+{% endblock %}
+
+{% block content %}
+    {% include "./includes/header.html" with active_page="challenge" %}
+    <h1>{{title}}</h1>
+    {% if month == 'january' %}
+        <p>No tasks in {{month}}</p>
+    {% else %}
+        <h3>{{ month | title }}</h3>
+    {% endif %}
+{% endblock %}
