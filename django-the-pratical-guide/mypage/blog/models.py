@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.core.validators import MinLengthValidator
+from django.utils.text import slugify
 
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
@@ -16,7 +17,7 @@ class Author(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True, editable=False)
     default = models.BooleanField(default=False)
 
     def __str__(self):
@@ -25,7 +26,7 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=150)
     excerpt = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
     image_url = models.URLField(default='https://source.unsplash.com/random/800x400?writing,blog')
     date = models.DateTimeField(default=timezone.now)
@@ -33,6 +34,10 @@ class Post(models.Model):
         Author, on_delete=models.CASCADE, related_name='posts'
     )
     tags = models.ManyToManyField(Tag, related_name='posts')
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['-date']
