@@ -21,7 +21,21 @@
                             <h5 class="card-title">{{ post.title }}</h5>
                             <p class="card-text text-muted">{{ post.excerpt }}</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">{{ post.date|date:"F j, Y" }}</small>
+                                <div>
+                                    <small class="text-muted">{{ post.date|date:"F j, Y" }}</small>
+                                    {% if user.is_authenticated %}
+                                        <form method="post" action="{% url 'toggle-favorite' post.slug %}" class="d-inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-sm {% if post.is_favorited %}btn-warning{% else %}btn-outline-warning{% endif %}">
+                                                {% if post.is_favorited %}
+                                                    Unfavorite
+                                                {% else %}
+                                                    Favorite
+                                                {% endif %}
+                                            </button>
+                                        </form>
+                                    {% endif %}
+                                </div>
                                 <a href="{% url 'post-detail-blog' post.slug %}" class="btn btn-outline-primary btn-sm">Read More</a>
                             </div>
                         </div>
