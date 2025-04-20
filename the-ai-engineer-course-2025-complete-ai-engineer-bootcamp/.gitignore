@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv
+venv/
+env/
+ENV/
+build/
+dist/
+.eggs/
+*.egg-info/
+*.egg
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Env files
+.env
+*.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+
+# Misc
+*.swp
+*.swo
+*.bak
+*.tmp
+
+intro-to-ai/
